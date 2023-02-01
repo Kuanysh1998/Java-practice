@@ -1,0 +1,35 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class InventionDay {
+    public static final String INVENTED = "Пожалуйста, можете забрать ваш карманный телепорт. Спасибо за ожидание!";
+    public static final String NOT_INVENTED = "Извините, телепорт еще не изобрели, приходите через 10 лет.";
+
+    public static final Calendar INVENTION_DAY = new GregorianCalendar(2192, Calendar.JUNE, 12);
+
+    public static void main(String[] args) {
+        Calendar currentDay = Calendar.getInstance();
+
+        while (true) {
+
+            isTeleportInvented(currentDay);
+            currentDay.add(Calendar.YEAR, 10);
+
+            if (isTeleportInvented(currentDay) == false) break;
+        }
+    }
+
+    static boolean isTeleportInvented(Calendar currentDay) {
+        if (INVENTION_DAY.after(currentDay)) {
+            System.out.println(NOT_INVENTED);
+            return true;
+        }
+        if (INVENTION_DAY.before(currentDay)) {
+            System.out.println(INVENTED;
+
+            return false;
+
+        }
+        return false;
+    }
+}
